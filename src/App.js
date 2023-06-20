@@ -6,7 +6,10 @@ const Container =styled.div`
   display: flex;
 `
 
-const Main = styled.div``
+const Main = styled.div`
+  flex:7;
+  background-color: #181818;
+`
 const Wrapper = styled.div``
 
 function App() {
