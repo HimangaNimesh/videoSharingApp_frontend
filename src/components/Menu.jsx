@@ -17,6 +17,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     flex:1;
@@ -77,10 +78,12 @@ const Menu = ({darkMode, setDarkMode}) => {
   return (
     <Container>
         <Wrapper>
+            <Link to="/" style={{textDecoration:"none", color:"inherit"}}>
             <Logo>
                 <Img src={HimaLogo}/>
                 HimanGo
             </Logo>
+            </Link>
             <Item>
                 <HomeIcon/>
                 Home
