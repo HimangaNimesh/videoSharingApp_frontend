@@ -112,10 +112,12 @@ const Menu = ({darkMode, setDarkMode}) => {
             <Hr/>
             <Login>
                 Sign into like videos, comment and subscribe.
+                <Link to="signin" style={{textDecoration: "none"}}>
                 <Button>
                     <AccountCircleIcon/>
                     Signin
                 </Button> 
+                </Link>
             </Login>
             <Hr/>
             <Title>Best of HimanGO</Title>
