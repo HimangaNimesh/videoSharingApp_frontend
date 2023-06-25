@@ -47,6 +47,46 @@ const Hr = styled.hr`
   margin: 15px 0;
   border: 0.5px solid ${({theme}) => theme.soft}; 
 `
+const Channel = styled.div`
+  display:flex;
+  justify-content:space-between;
+`
+const ChannelInfo = styled.div`
+  display:flex;
+  gap: 20px;
+`
+const Subscribe = styled.button`
+  background-color:#cc1a00;
+  font-weight:500;
+  color:white;
+  border:none;
+  border-radius:3px;
+  height:max-content;
+  padding:10px 20px;
+  cursor:pointer;
+`
+const ChannelImg = styled.img`
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background-color: #999;
+`
+const ChannelDetails = styled.div`
+  display:flex;
+  flex-direction:column;
+  color: ${({theme}) => theme.text}; 
+`
+const ChannelName = styled.span`
+  font-weight:500;
+`
+const ChannelDesc = styled.p`
+font-size:14px;
+`
+const ChannelCounter = styled.span`
+  margin: 5px 0 20px 0;
+  color: ${({theme}) => theme.textSoft};
+  font-size:12px;
+`
 
 const Video = () => {
   return (
@@ -74,6 +114,17 @@ const Video = () => {
           </Buttons>
         </Details>
         <Hr/>
+        <Channel>
+          <ChannelInfo>
+            <ChannelImg src='https://avatars.githubusercontent.com/u/85472894?s=400&u=69ea9880abf61a867361b91d914e8075c12ed204&v=4'/>
+            <ChannelDetails>
+              <ChannelName>HimaBro</ChannelName>
+              <ChannelCounter>546k subscribers</ChannelCounter>
+              <ChannelDesc>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum aspernatur soluta vel dolores! Error fugiat, quaerat illo soluta pariatur quia, quas aliquam cum aspernatur iusto recusandae nostrum mollitia natus laudantium?</ChannelDesc>
+            </ChannelDetails>
+          </ChannelInfo>
+          <Subscribe>Subscribe</Subscribe>
+        </Channel>
       </Content>
       <Recomandation>Recomandation</Recomandation>
     </Container>
