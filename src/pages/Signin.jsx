@@ -1,5 +1,8 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import {loginFailure, loginStart, loginSuccess} from '../redux/userSlice'
+import { useDispatch } from 'react-redux'; 
 
 const Container = styled.div`
     display: flex;
@@ -55,18 +58,38 @@ const Link = styled.span`
 `
 
 const Signin = () => {
+
+    const [name, setName] = useState("")
+    //const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const dispatch = useDispatch()
+
+    const handleLogin = async(e) => {
+        console.log("hello bosa")
+        e.preventDefault();
+        dispatch(loginStart())
+        try {
+            const res = await axios.post("/auth/signin", {name,password})
+            console.log("********************************",res.data)
+            dispatch(loginSuccess(res.data))
+        } catch (error) {
+            console.log("********************************",error)
+            dispatch(loginFailure())
+        }
+    }
+
   return (
     <Container>
         <Wrapper>
             <Title>Sign in</Title>
             <SubTitle>To Continue to HimaGo</SubTitle>
-            <Input placeholder='userName'/>
-            <Input type='password' placeholder='password'/>
-            <Button>Sign in</Button>
+            <Input placeholder='userName' onChange={e=>setName(e.target.value)}/>
+            <Input type='password' placeholder='password' onChange={e=>setPassword(e.target.value)}/>
+            <Button onClick={handleLogin}>Sign in</Button>
             <Title>or</Title>
-            <Input placeholder='userName'/>
-            <Input placeholder='email'/>
-            <Input type='password' placeholder='password'/>
+            <Input placeholder='userName' onChange={e=>setName(e.target.value)}/>
+            <Input placeholder='email' />
+            <Input type='password' placeholder='password' onChange={e=>setPassword(e.target.value)}/>
             <Button>Sign up</Button>
         </Wrapper>
         <More>
