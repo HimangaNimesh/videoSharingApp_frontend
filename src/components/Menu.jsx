@@ -18,6 +18,7 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
     flex:1;
@@ -79,6 +80,9 @@ const Title = styled.h2`
 `
 
 const Menu = ({darkMode, setDarkMode}) => {
+
+    const {currentUser} = useSelector(state=> state.user)
+
   return (
     <Container>
         <Wrapper>
@@ -114,7 +118,9 @@ const Menu = ({darkMode, setDarkMode}) => {
                 History
             </Item>
             <Hr/>
-            <Login>
+            {!currentUser && 
+                <>
+                <Login>
                 Sign into like videos, comment and subscribe.
                 <Link to="signin" style={{textDecoration: "none"}}>
                 <Button>
@@ -122,8 +128,9 @@ const Menu = ({darkMode, setDarkMode}) => {
                     Signin
                 </Button> 
                 </Link>
-            </Login>
-            <Hr/>
+                </Login>
+                <Hr/>
+            </>}
             <Title>Best of HimanGO</Title>
             <Item>
                 <LibraryMusicIcon/>
